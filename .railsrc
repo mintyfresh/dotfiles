@@ -1,0 +1,7 @@
+-d postgresql
+--skip-test
+--skip-system-test
+--skip-action-cable
+--skip-action-text
+--skip-action-mailbox
+--template=~/rails-template.rb
