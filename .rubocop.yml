@@ -1,0 +1,89 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  DefaultFormatter: progress
+  DisplayCopNames: true
+  ExtraDetails: true
+  NewCops: enable
+  TargetRubyVersion: 3.0
+  Exclude:
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'vendor/bundle/**/*'
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Layout/ExtraSpacing:
+  AllowForAlignment: true
+
+Layout/HashAlignment:
+  EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
+
+Layout/LineLength:
+  Max: 120
+  IgnoredPatterns:
+    - '^# [^\n]+'
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Lint/MissingSuper:
+  Exclude:
+    - app/components/**/*.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*.rb'
+    - 'config/routes.rb'
+    - 'lib/tasks/**/*.rake'
+    - 'spec/**/*'
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: error
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
+Rails/DynamicFindBy:
+  Enabled: false
+
+Rails/FilePath:
+  EnforcedStyle: arguments
+
+Rails/SkipsModelValidations:
+  AllowedMethods:
+    - increment!
+    - decrement!
+    - touch
+
+RSpec/ExpectChange:
+  EnforcedStyle: block
+
+RSpec/HookArgument:
+  EnforcedStyle: each
+
+RSpec/NestedGroups:
+  Max: 5
+
+Style/AccessorGrouping:
+  EnforcedStyle: separated
+
+Style/ClassAndModuleChildren:
+  SafeAutoCorrect: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/RedundantFetchBlock:
+  Safe: true
