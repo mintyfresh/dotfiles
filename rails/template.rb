@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 gem 'amazing_print'
-gem 'faraday'
 gem 'oj'
 gem 'pundit' if (install_pundit = yes?('Install Pundit? (y/n)'))
 gem 'seedbank'
@@ -18,10 +17,6 @@ if yes?('Install ViewComponent? (y/n)')
   RUBY
 end
 
-gem_group :test do
-  gem 'rspec-rails'
-end
-
 gem_group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
@@ -29,11 +24,15 @@ gem_group :development, :test do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'solargraph', require: false
 end
 
 gem_group :development do
   gem 'annotate'
+  gem 'solargraph', require: false
+end
+
+gem_group :test do
+  gem 'rspec-rails'
 end
 
 run 'bundle install -j $(nproc)'
@@ -149,10 +148,7 @@ create_file 'app/services/application_service.rb', <<~RUBY
 RUBY
 
 if yes?('Configure Rubocop? (y/n)')
-  require 'faraday'
-
-  response = Faraday.get('https://raw.githubusercontent.com/mintyfresh/dotfiles/main/.rubocop.yml')
-  create_file '.rubocop.yml', response.body
+  create_file '.rubocop.yml', File.read("#{ENV['HOME']}/.dotfiles/rails/.rubocop.yml")
 
   run 'bundle binstub rubocop'
   run 'bin/rubocop -A'

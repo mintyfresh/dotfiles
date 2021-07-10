@@ -1,0 +1,5 @@
+#! /bin/env ruby
+
+require_relative '../lib/dotfiles_installer.rb'
+
+dotfiles_installer.uninstall!

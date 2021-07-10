@@ -4,4 +4,4 @@
 --skip-action-cable
 --skip-action-text
 --skip-action-mailbox
---template=~/rails-template.rb
+--template=~/.dotfiles/rails/template.rb
