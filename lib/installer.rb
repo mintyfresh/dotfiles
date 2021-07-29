@@ -18,11 +18,15 @@ class Installer
     @instructions = []
   end
 
-  # @param source [String]
-  # @param destination [String]
+  # @param paths [Hash{String => String}]
   # @return [void]
-  def add(source, destination = resolve_default_destination(source))
-    @instructions << Instruction.new(resolve_source_file(source), destination).freeze
+  def add(paths)
+    paths.each do |source, destination|
+      source      = resolve_source_path(source)
+      destination = resolve_destination_path(destination)
+
+      @instructions << Instruction.new(source, destination).freeze
+    end
   end
 
   # @return [void]
@@ -57,13 +61,13 @@ private
 
   # @param source [String]
   # @return [void]
-  def resolve_source_file(source)
+  def resolve_source_path(source)
     ROOT_PATH.join(source).to_s
   end
 
   # @param source [String]
   # @return [void]
-  def resolve_default_destination(source)
+  def resolve_destination_path(source)
     HOME_PATH.join(File.basename(source)).to_s
   end
 

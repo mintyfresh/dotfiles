@@ -6,7 +6,7 @@ require_relative 'installer'
 def dotfiles_installer
   installer = Installer.new
 
-  installer.add 'rails/.railsrc'
+  installer.add '.railsrc' => 'rails/.railsrc'
 
   installer
 end
