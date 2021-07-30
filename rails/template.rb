@@ -81,7 +81,7 @@ inject_into_file 'spec/rails_helper.rb', after: "# config.filter_gems_from_backt
     require 'rake'
 
     Rails.application.class.load_tasks
-    Seedback.load_tasks
+    Seedbank.load_tasks
 
     Rake::Task['db:seed'].invoke
   end
