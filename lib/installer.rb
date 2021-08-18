@@ -21,7 +21,7 @@ class Installer
   # @param paths [Hash{String => String}]
   # @return [void]
   def add(paths)
-    paths.each do |source, destination|
+    paths.each do |destination, source|
       source      = resolve_source_path(source)
       destination = resolve_destination_path(destination)
 
